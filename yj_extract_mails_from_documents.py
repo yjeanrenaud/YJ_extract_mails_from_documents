@@ -4,7 +4,9 @@
 Created on Tue May 10 22:17:11 2022
 by Yves Jeanrenaud
 Verson 1.0 runs on PDF files
-Version 1.2 now also reads docx files
+Version 1.2 now also reads doc/x files
+This script scanns files in doc, docx and PDf format (unprotected) for e-mail addresses. They may also be camouflaged e. g. mail_at_somehwere.tld
+currently only @, (at), [at] and _at_ are supported.
 
 with thanks, tegards and cudos to:
 https://www.nicholasnadeau.com/post/2021/9/pdf-hero-how-to-extract-emails-with-python/
@@ -91,8 +93,8 @@ def validate_email_string(text: str) -> Optional[str]:
     # humans don't always follow instructions
     # this can cause problems with text and fields
     # be super strict when getting emails
-    #email_regex = re.compile(r"\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b")
-    email_regex = re.compile(r"\b[\w\.-]+(@|_at_)[\w\.-]+\.\w{2,}\b") #| oder _at_ und auch neue TLD wie .architect
+    #email_regex = re.compile(r"\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b") # just mail@somehwere.tld4
+    email_regex = re.compile(r"\b[\w\.-]+(@|_at_|\[at\]|\(at\))[\w\.-]+\.\w{2,}\b") # @ or _at_  or [at] or (at) and also include longer tld e. g. .architect
     #print(text)
     results = re.findall(email_regex, text)
     if results.count==0:
