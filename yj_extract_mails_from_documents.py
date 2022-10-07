@@ -3,12 +3,15 @@
 """
 Created on Tue May 10 22:17:11 2022
 by Yves Jeanrenaud
+Change log
+---
+Version 1.0.1 typos and comments
 Verson 1.0 runs on PDF files
 Version 1.2 now also reads doc/x files
 This script scanns files in doc, docx and PDf format (unprotected) for e-mail addresses. They may also be camouflaged e. g. mail_at_somehwere.tld
 currently only @, (at), [at] and _at_ are supported.
 
-with thanks, tegards and cudos to:
+with thanks, regards and cudos to:
 https://www.nicholasnadeau.com/post/2021/9/pdf-hero-how-to-extract-emails-with-python/
 https://www.geeksforgeeks.org/append-list-of-dictionary-and-series-to-a-existing-pandas-dataframe-in-python/
 
@@ -166,4 +169,4 @@ for path in docx_paths:
     extracted_data  = parse_docx (path)
     df = df.append(extracted_data, ignore_index=True, sort=False)
 
-df.to_csv("emails_collected.csv",sep=';',encoding='ansi')
+df.to_csv("emails_collected.csv",sep=';',encoding='ansi') # change ; to , if you are not using a stupid office suite from Redmond in a German or Swiss-German localisation that assumes semicola as separators
